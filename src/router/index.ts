@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import SearchView from '../views/SearchView.vue'
+import LocalityView from '../views/LocalityView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,6 +10,11 @@ const router = createRouter({
       name: 'search',
       component: SearchView,
     },
+    {
+      path: '/locality/:id',
+      name: 'lcoality',
+      component: LocalityView,
+    }
   ],
 })
 

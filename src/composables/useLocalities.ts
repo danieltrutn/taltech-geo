@@ -10,14 +10,25 @@ export function useLocalities(initialParams: FetchLocalitiesParams = {}) {
   async function fetchPage(params: FetchLocalitiesParams = {}) {
     error.value = null
    
-    const res = await fetch(`https://rwapi.geoloogia.info/api/v1/public/localities/?name__icontains=${params.name.toString()}&limit=10`)
+    const res = await fetch(`https://rwapi.geoloogia.info/api/v1/public/localities/?name__icontains=${params.name.toString()}&limit=10&expand=country`)
       if (!res.ok) {
         throw new Error(`API error: ${res.status} ${res.statusText}`)
       }
       const data: LocalitiesApiResponse = await res.json()
       localities.value = data.results
       totalCount.value = data.count
+  }
 
+  async function fetchLocalityPage(id: any) {
+    error.value = null
+   
+    const res = await fetch(`https://rwapi.geoloogia.info/api/v1/public/localities/?id=${id}&expand=country`)
+      if (!res.ok) {
+        throw new Error(`API error: ${res.status} ${res.statusText}`)
+      }
+      const data: LocalitiesApiResponse = await res.json()
+      localities.value = data.results
+      totalCount.value = data.count
   }
  
   return {
@@ -26,5 +37,6 @@ export function useLocalities(initialParams: FetchLocalitiesParams = {}) {
     loading,
     error,
     fetchPage,
+    fetchLocalityPage,
   }
 }

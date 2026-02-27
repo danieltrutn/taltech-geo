@@ -20,7 +20,7 @@ function onInput(e: Event) {
       type="search"
       :value="modelValue"
       :placeholder="placeholder ?? 'Search by name...'"
-      class="w-full border border-slate-300 bg-white py-2 pl-4 pr-10 text-slate-900 placeholder-slate-500 focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-400/30 disabled:opacity-60"
+      class="w-full border border-slate-300 bg-white py-2 pl-4 pr-15 text-slate-900 placeholder-slate-500 focus:outline-none  disabled:opacity-60"
       @input="onInput"
     />
   </div>

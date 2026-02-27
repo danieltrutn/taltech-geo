@@ -37,7 +37,7 @@ onMounted(() => {
       {{ error }}
     </div>
 
-    {{ totalCount }}
+    <p class="text-red-800">Total: {{ totalCount }}</p>
 
     <LocalitiesList :localities="localities" :search-query="searchQuery"/>
   </div>
