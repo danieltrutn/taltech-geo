@@ -10,7 +10,7 @@ defineProps<{
 
 <template>
   <div class="relative">
-    <router-link :to="`/locality/${locality.id}`" v-for="locality in localities" :key="locality.id" class="w-full border bg-green flex place-content-between border-slate-300 text-white py-2 pl-4 pr-10 text-slate-900 mb-4">
+    <router-link :to="`/locality/${locality.id}`" v-for="locality in localities" :key="locality.id" class="w-full border flex place-content-between border-slate-300 py-2 pl-4 pr-10 text-slate-900 mb-4 hover:bg-white">
         <div>
             <p>{{ locality.name_en }}</p>
             <p>ID: {{ locality.id }}</p>
