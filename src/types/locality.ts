@@ -28,4 +28,5 @@ export interface LocalitiesApiResponse {
 
 export interface FetchLocalitiesParams {
   name?: string
+  offset?: number
 }

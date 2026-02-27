@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 </script>
 
 <template>
@@ -11,7 +14,7 @@
       </div>
     </header>
     <main class="mx-auto max-w-4xl border-x border-gray-300 px-4 py-6 sm:px-6">
-      <RouterView v-slot="{ Component }">
+      <RouterView :key="route.fullPath" v-slot="{ Component }">
         <transition name="fade" mode="out-in">
           <component :is="Component" />
         </transition>

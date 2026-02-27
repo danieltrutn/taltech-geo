@@ -1,28 +1,34 @@
 <script setup lang="ts">
-import { ref, onBeforeMount } from 'vue'
+import { ref, onBeforeMount, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useLocalities } from '@/composables/useLocalities'
 import LocalityMap from '@/components/LocalityMap.vue'
 
 const {
   localities,
+  totalCount,
   fetchLocalityPage,
 } = useLocalities()
 
 const route = useRoute()
 
-onBeforeMount(() => {
+function loadLocality() {
   fetchLocalityPage(route.params.id)
-})
+}
+
+onBeforeMount(loadLocality)
+watch(() => route.params.id, loadLocality)
 </script>
 
 <template>
   <div class="space-y-6">
     <template v-if="localities[0]">
       <div>
-        <router-link to="/" class="mb-6 text-xl font-semibold text-green hover:text-slate-600">
-         < Back
-        </router-link>
+        <div class="w-full flex items-center justify-between mb-6 pb-5 border-b border-slate-300 pt-4">
+          <router-link to="/" class="text-xl font-semibold text-green hover:text-slate-600">
+            < Back
+          </router-link>
+        </div>
         <h1 class="text-2xl font-semibold text-slate-800">
           {{ localities[0].name_en || localities[0].name }}
         </h1>

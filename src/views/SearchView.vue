@@ -10,6 +10,10 @@ const {
   totalCount,
   loading,
   error,
+  hasNext,
+  hasPrevious,
+  goNext,
+  goPrevious,
   fetchPage,
 } = useLocalities({ limit: 20 })
 
@@ -37,7 +41,42 @@ onMounted(() => {
     </div>
 
     <p class="text-red-800">Total: {{ totalCount }}</p>
-
+    <div class="flex gap-2">
+      <button
+        type="button"
+        :disabled="!hasPrevious"
+        class="text-xl font-semibold text-green hover:text-slate-600 disabled:cursor-not-allowed disabled:opacity-50"
+        @click="goPrevious"
+      >
+        < Previous
+      </button>
+      <button
+        type="button"
+        :disabled="!hasNext"
+        class="text-xl font-semibold text-green hover:text-slate-600 disabled:cursor-not-allowed disabled:opacity-50"
+        @click="goNext"
+      >
+        Next >
+      </button>
+    </div>
     <LocalitiesList :localities="localities" :search-query="searchQuery"/>
+     <div class="flex gap-2">
+      <button
+        type="button"
+        :disabled="!hasPrevious"
+        class="text-xl font-semibold text-green hover:text-slate-600 disabled:cursor-not-allowed disabled:opacity-50"
+        @click="goPrevious"
+      >
+        < Previous
+      </button>
+      <button
+        type="button"
+        :disabled="!hasNext"
+        class="text-xl font-semibold text-green hover:text-slate-600 disabled:cursor-not-allowed disabled:opacity-50"
+        @click="goNext"
+      >
+        Next >
+      </button>
+    </div>
   </div>
 </template>

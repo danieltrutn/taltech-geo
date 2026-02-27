@@ -14,7 +14,7 @@ defineProps<{
       v-for="locality in localities"
       :key="locality.id"
       :to="`/locality/${locality.id}`"
-      class="w-full border flex border-slate-300 p-5 text-slate-900 mb-4 hover:bg-white"
+      class="w-full border flex border-slate-300 p-5 text-slate-900 mb-5 hover:bg-white"
     >
       <div class="w-full flex items-center justify-between">
         <div>
