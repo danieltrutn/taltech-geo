@@ -3,7 +3,7 @@ import { ref, watch, onMounted } from 'vue'
 import { useLocalities } from '@/composables/useLocalities'
 import SearchInput from '@/components/SearchInput.vue'
 import LocalitiesList from '@/components/LocalitiesList.vue'
-
+import PaginationButtons from '@/components/PaginationButtons.vue'
 const searchQuery = ref('')
 const {
   localities,
@@ -16,7 +16,6 @@ const {
   goPrevious,
   fetchPage,
 } = useLocalities({ limit: 20 })
-
 
 watch(searchQuery, (q) => {
   fetchPage({ name: searchQuery.value })
@@ -41,42 +40,19 @@ onMounted(() => {
     </div>
 
     <p class="text-red-800">Total: {{ totalCount }}</p>
-    <div class="flex gap-2">
-      <button
-        type="button"
-        :disabled="!hasPrevious"
-        class="text-xl font-semibold text-green hover:text-slate-600 disabled:cursor-not-allowed disabled:opacity-50"
-        @click="goPrevious"
-      >
-        < Previous
-      </button>
-      <button
-        type="button"
-        :disabled="!hasNext"
-        class="text-xl font-semibold text-green hover:text-slate-600 disabled:cursor-not-allowed disabled:opacity-50"
-        @click="goNext"
-      >
-        Next >
-      </button>
-    </div>
+
+    <PaginationButtons
+      :has-previous="hasPrevious"
+      :has-next="hasNext"
+      @previous="goPrevious"
+      @next="goNext"
+    />
     <LocalitiesList :localities="localities" :search-query="searchQuery"/>
-     <div class="flex gap-2">
-      <button
-        type="button"
-        :disabled="!hasPrevious"
-        class="text-xl font-semibold text-green hover:text-slate-600 disabled:cursor-not-allowed disabled:opacity-50"
-        @click="goPrevious"
-      >
-        < Previous
-      </button>
-      <button
-        type="button"
-        :disabled="!hasNext"
-        class="text-xl font-semibold text-green hover:text-slate-600 disabled:cursor-not-allowed disabled:opacity-50"
-        @click="goNext"
-      >
-        Next >
-      </button>
-    </div>
+    <PaginationButtons
+      :has-previous="hasPrevious"
+      :has-next="hasNext"
+      @previous="goPrevious"
+      @next="goNext"
+    />
   </div>
 </template>

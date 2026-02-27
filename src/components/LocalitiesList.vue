@@ -5,7 +5,6 @@ defineProps<{
   localities: Locality[]
   searchQuery?: string
 }>()
-
 </script>
 
 <template>

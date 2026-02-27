@@ -30,11 +30,13 @@ export function useLocalities(initialParams: FetchLocalitiesParams = {}) {
 
     try {
         const url = params.nextUrl ?? buildUrl({ ...initialParams, ...params })
+        
         const res = await fetch(url)
         if (!res.ok) {
           throw new Error(`API error: ${res.status} ${res.statusText}`)
         }
         const data: LocalitiesApiResponse = await res.json()
+
         localities.value = data.results
         totalCount.value = data.count
         nextUrl.value = data.next
@@ -50,18 +52,6 @@ export function useLocalities(initialParams: FetchLocalitiesParams = {}) {
       } finally {
         loading.value = false
       }
-  }
-
-  async function fetchLocalityPage(id: any) {
-    error.value = null
-   
-    const res = await fetch(`https://rwapi.geoloogia.info/api/v1/public/localities/?id=${id}&expand=country`)
-      if (!res.ok) {
-        throw new Error(`API error: ${res.status} ${res.statusText}`)
-      }
-      const data: LocalitiesApiResponse = await res.json()
-      localities.value = data.results
-      totalCount.value = data.count
   }
 
   async function goNext() {
@@ -116,6 +106,5 @@ export function useLocalities(initialParams: FetchLocalitiesParams = {}) {
     goNext,
     goPrevious,
     fetchPage,
-    fetchLocalityPage,
   }
 }

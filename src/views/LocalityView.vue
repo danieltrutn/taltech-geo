@@ -7,13 +7,13 @@ import LocalityMap from '@/components/LocalityMap.vue'
 const {
   localities,
   totalCount,
-  fetchLocalityPage,
+  fetchPage,
 } = useLocalities()
 
 const route = useRoute()
 
 function loadLocality() {
-  fetchLocalityPage(route.params.id)
+  fetchPage(route.params.id)
 }
 
 onBeforeMount(loadLocality)
