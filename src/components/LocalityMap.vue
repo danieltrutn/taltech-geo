@@ -14,7 +14,7 @@
         v-if="latitude != null && longitude != null"
         :lat-lng="[Number(latitude), Number(longitude)]"
       >
-        <l-popup>{{ latitude }}, {{ longitude }}</l-popup>
+        <l-popup>{{ name }}</l-popup>
       </l-marker>
     </l-map>
   </div>
@@ -27,6 +27,7 @@ import { LMap, LTileLayer, LMarker, LPopup } from "@vue-leaflet/vue-leaflet"
 export default {
   components: { LMap, LTileLayer, LMarker, LPopup },
   props: {
+    name: { type: String, default: null },
     latitude: { type: Number, default: null },
     longitude: { type: Number, default: null },
   },

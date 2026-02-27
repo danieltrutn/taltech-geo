@@ -12,7 +12,7 @@ const router = createRouter({
     },
     {
       path: '/locality/:id',
-      name: 'lcoality',
+      name: 'locality',
       component: LocalityView,
     }
   ],

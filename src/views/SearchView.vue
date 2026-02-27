@@ -25,12 +25,11 @@ onMounted(() => {
 
 <template>
   <div class="space-y-6">
-    <h1 class="text-2xl font-semibold text-slate-800">Localities</h1>
+    <h1  class="mt-6 text-2xl font-bold text-slate-800">Find localities</h1>
 
     <SearchInput
       v-model="searchQuery"
       :loading="loading"
-      placeholder="Filter by country ..."
     />
 
     <div v-if="error" class="rounded-lg bg-red-50 p-4 text-red-800">

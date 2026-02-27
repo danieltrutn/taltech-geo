@@ -2,23 +2,40 @@
 import type { Locality } from '@/types/locality'
 
 defineProps<{
-  localities:  Locality[]
+  localities: Locality[]
   searchQuery?: string
 }>()
 
 </script>
 
 <template>
-  <div class="relative">
-    <router-link :to="`/locality/${locality.id}`" v-for="locality in localities" :key="locality.id" class="w-full border flex place-content-between border-slate-300 py-2 pl-4 pr-10 text-slate-900 mb-4 hover:bg-white">
+  <div class="relative space-y-3">
+    <router-link
+      v-for="locality in localities"
+      :key="locality.id"
+      :to="`/locality/${locality.id}`"
+      class="w-full border flex border-slate-300 p-5 text-slate-900 mb-4 hover:bg-white"
+    >
+      <div class="w-full flex items-center justify-between">
         <div>
-            <p>{{ locality.name_en }}</p>
-            <p>ID: {{ locality.id }}</p>
-            <p>Country: {{ locality.country.name_en }}</p>
+          <p class="font-medium text-slate-800">
+            {{ locality.name_en }}
+          </p>
+          <p class="mt-0.5 text-sm text-slate-500">
+            ID: {{ locality.id }}
+          </p>
+          <p  class="mt-0.5 text-sm text-slate-500">
+            Country: {{ locality.country.name_en }}
+          </p>
         </div>
-        <p class="content-center">></p>
+        <span class="text-slate-400">></span>
+      </div>
     </router-link>
-    <div v-if="searchQuery?.trim() && localities.length === 0" class="py-8 text-center text-slate-600">
+
+    <div
+      v-if="searchQuery?.trim() && localities.length === 0"
+      class="py-8 text-center text-slate-600"
+    >
       No localities found for "{{ searchQuery }}"
     </div>
   </div>

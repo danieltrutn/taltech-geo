@@ -66,9 +66,14 @@ onBeforeMount(() => {
       </div>
 
       <LocalityMap
+        v-if="localities[0].latitude && localities[0].longitude"
+        :name="localities[0].name_en"
         :latitude="localities[0].latitude"
         :longitude="localities[0].longitude"
       />
+      <div v-else class="border border-slate-300 py-8 text-center text-slate-600">
+        There is no data for map.
+      </div>
     </template>
 
     <div v-else class="py-8 text-center text-slate-500">
