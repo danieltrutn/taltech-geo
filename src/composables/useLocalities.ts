@@ -21,7 +21,7 @@ export function useLocalities(initialParams: FetchLocalitiesParams = {}) {
 
     if (params.offset != null) search.set('offset', String(params.offset))
     if (params.name?.trim()) search.set('name__icontains', params.name.trim())
-
+    if (params.id != null) search.set('id', String(params.id))
     return `${API_BASE}?${search.toString()}`
   }
 

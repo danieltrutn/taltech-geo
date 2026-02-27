@@ -23,10 +23,15 @@ export interface Country {
 
 export interface LocalitiesApiResponse {
   count: number
+  next: string
+  previous: string
   results: Locality[]
 }
 
 export interface FetchLocalitiesParams {
   name?: string
+  limit?: number
+  nextUrl?: string
   offset?: number
+  id?: string | number
 }

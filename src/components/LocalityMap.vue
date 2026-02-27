@@ -1,10 +1,11 @@
 <template>
   <div class="h-[400px] w-full">
-    <l-map 
-      ref="map" 
-      v-model:zoom="zoom" 
-      :center="center"
-    >
+   <l-map 
+    ref="map" 
+    :useGlobalLeaflet="false"
+    v-model:zoom="zoom" 
+    :center="center"
+   >
       <l-tile-layer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         layer-type="base"

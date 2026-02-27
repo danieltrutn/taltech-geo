@@ -13,7 +13,10 @@ const {
 const route = useRoute()
 
 function loadLocality() {
-  fetchPage(route.params.id)
+  const id = route.params.id
+  if (id && typeof id === 'string') {
+    fetchPage({ id })
+  }
 }
 
 onBeforeMount(loadLocality)
