@@ -2,6 +2,7 @@
 import { ref, watch, onMounted } from 'vue'
 import { useLocalities } from '@/composables/useLocalities'
 import SearchInput from '@/components/SearchInput.vue'
+import LocalitiesList from '@/components/LocalitiesList.vue'
 
 const searchQuery = ref('')
 const {
@@ -14,7 +15,7 @@ const {
 
 
 watch(searchQuery, (q) => {
-  fetchPage(searchQuery.value)
+  fetchPage({ name: searchQuery.value })
 })
 
 onMounted(() => {
@@ -38,9 +39,6 @@ onMounted(() => {
 
     {{ totalCount }}
 
-    <div v-for="locality in localities">
-        <p>{{ locality.name_en }} </p>
-    </div>
-
+    <LocalitiesList :localities="localities" :search-query="searchQuery"/>
   </div>
 </template>
